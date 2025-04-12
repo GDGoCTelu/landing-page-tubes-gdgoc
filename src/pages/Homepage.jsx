@@ -4,6 +4,8 @@ import FeatureCard from '../components/Card/FeatureCard';
 import TodoList from '../constants/ToDoList';
 import DealsList from '../constants/DealsList';
 import DealCard from '../components/Card/DealCard';
+import VacationList from '../constants/VacationList';
+import VacationSlider from '../components/Slider/VacationSlider';
 
 function Homepage() {
   return (
@@ -84,260 +86,10 @@ function Homepage() {
       </section>
 
       {/* Destinations Section */}
-      <section className='bg-background-ash text-primary-black font-body w-full py-[120px]'>
-        <div className='mx-auto max-w-[1170px]'>
-          <h2 className='font-display text-h2 text-center font-bold'>
-            Explore top{' '}
-            <span className='text-primary-orange'>destinations</span>
-          </h2>
-          <p className='text-p2 text-light-gray mx-auto mt-4 w-[433px] text-center leading-[32px]'>
-            Explore your suitable and dream places around the world. Here are
-            the best destinations for you.
-          </p>
-
-          <div className='mt-16 flex justify-between'>
-            <div className='destination-card bg-background-white w-[270px] rounded-lg p-4 shadow-md'>
-              <img
-                src='/assets/destination1.svg'
-                alt='Paradise Beach'
-                className='h-[270px] w-full rounded-lg object-cover'
-              />
-              <div className='mt-4 flex items-center justify-between'>
-                <h3 className='text-title font-medium'>Paradise Beach</h3>
-                <p className='text-primary-orange font-semibold'>$550</p>
-              </div>
-              <div className='mt-2 flex items-center'>
-                <img
-                  src='/assets/location-icon.svg'
-                  alt='Location'
-                  className='mr-2 h-4'
-                />
-                <p className='text-light-gray'>Bali, Indonesia</p>
-                <div className='ml-auto flex items-center'>
-                  <p className='text-content mr-1'>4.8</p>
-                  <img src='/assets/star.svg' alt='Rating' className='h-4' />
-                </div>
-              </div>
-            </div>
-
-            <div className='destination-card bg-background-white w-[270px] rounded-lg p-4 shadow-md'>
-              <img
-                src='/assets/destination2.svg'
-                alt='Ocean View'
-                className='h-[270px] w-full rounded-lg object-cover'
-              />
-              <div className='mt-4 flex items-center justify-between'>
-                <h3 className='text-title font-medium'>Ocean View</h3>
-                <p className='text-primary-orange font-semibold'>$450</p>
-              </div>
-              <div className='mt-2 flex items-center'>
-                <img
-                  src='/assets/location-icon.svg'
-                  alt='Location'
-                  className='mr-2 h-4'
-                />
-                <p className='text-light-gray'>Phuket, Thailand</p>
-                <div className='ml-auto flex items-center'>
-                  <p className='text-content mr-1'>4.5</p>
-                  <img src='/assets/star.svg' alt='Rating' className='h-4' />
-                </div>
-              </div>
-            </div>
-
-            <div className='destination-card bg-background-white w-[270px] rounded-lg p-4 shadow-md'>
-              <img
-                src='/assets/destination3.svg'
-                alt='Mountain Retreat'
-                className='h-[270px] w-full rounded-lg object-cover'
-              />
-              <div className='mt-4 flex items-center justify-between'>
-                <h3 className='text-title font-medium'>Mountain Retreat</h3>
-                <p className='text-primary-orange font-semibold'>$620</p>
-              </div>
-              <div className='mt-2 flex items-center'>
-                <img
-                  src='/assets/location-icon.svg'
-                  alt='Location'
-                  className='mr-2 h-4'
-                />
-                <p className='text-light-gray'>Swiss Alps</p>
-                <div className='ml-auto flex items-center'>
-                  <p className='text-content mr-1'>4.9</p>
-                  <img src='/assets/star.svg' alt='Rating' className='h-4' />
-                </div>
-              </div>
-            </div>
-
-            <div className='destination-card bg-background-white w-[270px] rounded-lg p-4 shadow-md'>
-              <img
-                src='/assets/destination4.svg'
-                alt='City Skyline'
-                className='h-[270px] w-full rounded-lg object-cover'
-              />
-              <div className='mt-4 flex items-center justify-between'>
-                <h3 className='text-title font-medium'>City Skyline</h3>
-                <p className='text-primary-orange font-semibold'>$680</p>
-              </div>
-              <div className='mt-2 flex items-center'>
-                <img
-                  src='/assets/location-icon.svg'
-                  alt='Location'
-                  className='mr-2 h-4'
-                />
-                <p className='text-light-gray'>New York, USA</p>
-                <div className='ml-auto flex items-center'>
-                  <p className='text-content mr-1'>4.7</p>
-                  <img src='/assets/star.svg' alt='Rating' className='h-4' />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className='mt-12 flex justify-center'>
-            <button className='bg-primary-orange text-background-white text-p2 hover:bg-opacity-90 rounded-md px-6 py-3 font-medium transition-all'>
-              View All Destinations
-            </button>
-          </div>
-        </div>
-      </section>
+      <BestVacationPlanSection />
 
       {/* Testimonials Section */}
-      <section className='bg-background-white text-primary-black font-body w-full py-[120px]'>
-        <div className='mx-auto max-w-[1170px]'>
-          <h2 className='font-display text-h2 text-center font-bold'>
-            What people say{' '}
-            <span className='text-primary-orange'>about us</span>
-          </h2>
-          <p className='text-p2 text-light-gray mx-auto mt-4 w-[433px] text-center leading-[32px]'>
-            Our clients send us bunch of smiles with our services and we love
-            them.
-          </p>
-
-          <div className='mt-16 flex justify-between'>
-            <div className='testimonial-card bg-background-white w-[370px] rounded-lg border border-gray-100 p-6 shadow-md'>
-              <div className='mb-4 flex items-center'>
-                <img
-                  src='/assets/avatar1.svg'
-                  alt='Avatar'
-                  className='h-16 w-16 rounded-full'
-                />
-                <div className='ml-4'>
-                  <h3 className='text-title font-medium'>Michael Johnson</h3>
-                  <div className='mt-1 flex'>
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img src='/assets/star.svg' alt='Star' className='h-4' />
-                  </div>
-                </div>
-              </div>
-              <p className='text-light-gray'>
-                "On the Windows talking painted pasture yet its express parties
-                use. Sure last upon he same as knew next. Of believed or
-                diverted no."
-              </p>
-            </div>
-
-            <div className='testimonial-card bg-background-white w-[370px] rounded-lg border border-gray-100 p-6 shadow-md'>
-              <div className='mb-4 flex items-center'>
-                <img
-                  src='/assets/avatar2.svg'
-                  alt='Avatar'
-                  className='h-16 w-16 rounded-full'
-                />
-                <div className='ml-4'>
-                  <h3 className='text-title font-medium'>Sarah Williams</h3>
-                  <div className='mt-1 flex'>
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img src='/assets/star.svg' alt='Star' className='h-4' />
-                  </div>
-                </div>
-              </div>
-              <p className='text-light-gray'>
-                "For who thoroughly her boy estimating conviction. Removed
-                demands expense account in outward tedious do."
-              </p>
-            </div>
-
-            <div className='testimonial-card bg-background-white w-[370px] rounded-lg border border-gray-100 p-6 shadow-md'>
-              <div className='mb-4 flex items-center'>
-                <img
-                  src='/assets/avatar3.svg'
-                  alt='Avatar'
-                  className='h-16 w-16 rounded-full'
-                />
-                <div className='ml-4'>
-                  <h3 className='text-title font-medium'>Thomas Clark</h3>
-                  <div className='mt-1 flex'>
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img
-                      src='/assets/star.svg'
-                      alt='Star'
-                      className='mr-1 h-4'
-                    />
-                    <img src='/assets/star.svg' alt='Star' className='h-4' />
-                  </div>
-                </div>
-              </div>
-              <p className='text-light-gray'>
-                "Particular unaffected projection sentiments no my. Music marry
-                as at cause party worth weeks. Saw how marianne graceful
-                dissuade."
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <TestimonialSection />
 
       {/* Newsletter Section */}
       <section className='w-full bg-[#F7F8FC] py-[120px]'>
@@ -494,5 +246,37 @@ function Homepage() {
     </>
   );
 }
+
+const BestVacationPlanSection = () => {
+  return (
+    <section
+      id='destination'
+      className='text-primary-black font-body w-full bg-[#FEFCFB] py-[120px]'
+    >
+      <div className='mx-auto max-w-[1170px]'>
+        <div className='relative mx-auto flex max-w-[521px] flex-col items-center'>
+          <h2 className='font-display text-h2 text-center font-bold'>
+            Best <span className='text-primary-orange'>vacation plan</span>
+          </h2>
+          <p className='text-p2 text-light-gray mx-auto mt-4 text-center leading-[32px]'>
+            Plan your perfect vacation with our travel agency. Choose among
+            hundreds of all-inclusive offers!
+          </p>
+          <div className='absolute top-0 -right-16'>
+            <img src='/assets/coconut-tree-ornament.svg' alt='Plane' />
+          </div>
+        </div>
+
+        <div>
+          <VacationSlider destinations={VacationList} />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const TestimonialSection = () => {
+  return <section className='w-full bg-[#F7F8FC] py-[120px]'></section>;
+};
 
 export default Homepage;
