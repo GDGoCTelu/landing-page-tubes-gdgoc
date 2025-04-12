@@ -6,6 +6,8 @@ import DealsList from '../constants/DealsList';
 import DealCard from '../components/Card/DealCard';
 import VacationList from '../constants/VacationList';
 import VacationSlider from '../components/Slider/VacationSlider';
+import TestimonialsList from '../constants/TestimonialsList';
+import TestimonialCard from '../components/Card/TestimonialCard';
 
 function Homepage() {
   return (
@@ -92,25 +94,7 @@ function Homepage() {
       <TestimonialSection />
 
       {/* Newsletter Section */}
-      <section className='w-full bg-[#F7F8FC] py-[120px]'>
-        <div className='bg-primary-orange mx-auto max-w-[1170px] rounded-xl p-12 text-center'>
-          <h2 className='font-display text-h2 text-background-white mx-auto max-w-[650px] font-bold'>
-            Subscribe and get exclusive deals & offers
-          </h2>
-          <div className='mt-10 flex justify-center'>
-            <div className='relative w-[500px]'>
-              <input
-                type='email'
-                placeholder='Enter your email'
-                className='text-content w-full rounded-lg px-6 py-4'
-              />
-              <button className='bg-primary-orange text-background-white absolute top-1/2 right-2 -translate-y-1/2 transform rounded-lg px-5 py-2 font-medium'>
-                Subscribe
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <NewsletterSection />
 
       {/* Footer */}
       <footer className='bg-background-white w-full py-16'>
@@ -276,7 +260,114 @@ const BestVacationPlanSection = () => {
 };
 
 const TestimonialSection = () => {
-  return <section className='w-full bg-[#F7F8FC] py-[120px]'></section>;
+  const [activeIndex, setActiveIndex] = React.useState(1);
+
+  const nextTestimonial = () => {
+    setActiveIndex((prev) =>
+      prev === TestimonialsList.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevTestimonial = () => {
+    setActiveIndex((prev) =>
+      prev === 0 ? TestimonialsList.length - 1 : prev - 1
+    );
+  };
+
+  // Function to get visible testimonials (current, previous, and next)
+  const getVisibleTestimonials = () => {
+    const prev =
+      activeIndex === 0 ? TestimonialsList.length - 1 : activeIndex - 1;
+    const next =
+      activeIndex === TestimonialsList.length - 1 ? 0 : activeIndex + 1;
+
+    return [
+      { ...TestimonialsList[prev], position: 'left' },
+      { ...TestimonialsList[activeIndex], position: 'center' },
+      { ...TestimonialsList[next], position: 'right' },
+    ];
+  };
+
+  return (
+    <section className='w-full bg-[#F7F8FC] py-[30px]'>
+      <div className='mx-auto max-w-[1170px]'>
+        <div className='relative mx-auto flex max-w-[521px] flex-col items-center'>
+          <h2 className='text-h2 font-display text-center font-bold'>
+            What People Say{' '}
+            <span className='text-primary-orange'>About Us</span>
+          </h2>
+          <p className='text-light-gray text-p2 mx-auto mt-4 text-center'>
+            Our clients send us bunch of smilies with our services and we love
+            them.
+          </p>
+        </div>
+
+        <div className='relative mt-16 flex justify-center'>
+          <div className='grid max-w-[1170px] grid-cols-1 gap-8 md:grid-cols-3'>
+            {getVisibleTestimonials().map((testimonial, index) => (
+              <div
+                key={`${testimonial.id}-${index}`}
+                className={`transform transition duration-300 ${testimonial.position === 'center' ? 'z-20 scale-100' : 'z-10 scale-95 opacity-70'} ${testimonial.position === 'left' ? 'hidden md:block' : ''} ${testimonial.position === 'right' ? 'hidden md:block' : ''} `}
+              >
+                <TestimonialCard
+                  {...testimonial}
+                  isActive={testimonial.position === 'center'}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className='mt-12 flex items-center justify-center gap-3'>
+          <button
+            onClick={prevTestimonial}
+            className='bg-background-white flex h-5 w-5 items-center justify-center rounded-full border border-[#999999]/50 transition hover:bg-gray-100'
+            aria-label='Previous testimonial'
+          >
+            <img
+              className='h-2 w-2'
+              src='/assets/arrow-gray.svg'
+              alt='Arrow Left'
+            />
+          </button>
+          <button
+            onClick={nextTestimonial}
+            className='bg-primary-orange flex h-5 w-5 items-center justify-center rounded-full transition hover:bg-orange-600'
+            aria-label='Next testimonial'
+          >
+            <img
+              className='h-2 w-2'
+              src='/assets/arrow-white.svg'
+              alt='Arrow Right'
+            />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
 };
 
+const NewsletterSection = () => {
+  return (
+    <section className='w-full bg-[#F7F8FC] py-[120px]'>
+      <div className='bg-primary-orange mx-auto max-w-[1170px] rounded-xl p-12 text-center'>
+        <h2 className='font-display text-h2 text-background-white mx-auto max-w-[650px] font-bold'>
+          Subscribe and get exclusive deals & offers
+        </h2>
+        <div className='mt-10 flex justify-center'>
+          <div className='relative w-[500px]'>
+            <input
+              type='email'
+              placeholder='Enter your email'
+              className='text-content w-full rounded-lg bg-white px-6 py-4'
+            />
+            <button className='bg-primary-orange text-background-white absolute top-1/2 right-2 -translate-y-1/2 transform rounded-lg px-5 py-2 font-medium'>
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 export default Homepage;
