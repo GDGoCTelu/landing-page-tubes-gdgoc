@@ -289,7 +289,7 @@ const TestimonialSection = () => {
   };
 
   return (
-    <section className='w-full bg-[#F7F8FC] py-[30px]'>
+    <section className='w-full bg-[#F7F8FC] py-7'>
       <div className='mx-auto max-w-[1170px]'>
         <div className='relative mx-auto flex max-w-[521px] flex-col items-center'>
           <h2 className='text-h2 font-display text-center font-bold'>
@@ -302,7 +302,7 @@ const TestimonialSection = () => {
           </p>
         </div>
 
-        <div className='relative mt-16 flex justify-center'>
+        <div className='relative mt-4 flex justify-center'>
           <div className='grid max-w-[1170px] grid-cols-1 gap-8 md:grid-cols-3'>
             {getVisibleTestimonials().map((testimonial, index) => (
               <div
