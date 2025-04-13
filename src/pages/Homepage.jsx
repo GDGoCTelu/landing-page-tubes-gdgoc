@@ -14,7 +14,7 @@ function Homepage() {
       >
         <Navbar />
         <div className='grid grid-cols-2 gap-2'>
-          <div className='col-span-[521px] mt-auto ml-[375px]'>
+          <div className='col-span-[521px] mt-auto ml-[120px]'>
             <h1 className='text-h1 font-display text-primary-black leading-[70px] font-bold'>
               Get started your exciting{' '}
               <span className='text-primary-orange'>journey</span> with us.
