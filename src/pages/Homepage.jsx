@@ -4,6 +4,10 @@ import FeatureCard from '../components/Card/FeatureCard';
 import TodoList from '../constants/ToDoList';
 import DealsList from '../constants/DealsList';
 import DealCard from '../components/Card/DealCard';
+import VacationList from '../constants/VacationList';
+import VacationSlider from '../components/Slider/VacationSlider';
+import TestimonialsList from '../constants/TestimonialsList';
+import TestimonialCard from '../components/Card/TestimonialCard';
 
 function Homepage() {
   return (
@@ -39,7 +43,7 @@ function Homepage() {
               Things you need <span className='text-primary-orange'>to do</span>
             </h2>
             <p className='text-p2 text-light-gray mx-auto w-[482px] text-center leading-[32px]'>
-              We ensure that you’ll embark on a perfectly planned, safe vacation
+              We ensure that you'll embark on a perfectly planned, safe vacation
               at a price you can afford.
             </p>
           </div>
@@ -82,8 +86,288 @@ function Homepage() {
           </button>
         </div>
       </section>
+
+      {/* Destinations Section */}
+      <BestVacationPlanSection />
+
+      {/* Testimonials Section */}
+      <TestimonialSection />
+
+      {/* Newsletter Section */}
+      <NewsletterSection />
+
+      {/* Footer */}
+      <footer className='bg-background-white w-full py-16'>
+        <div className='mx-auto grid max-w-[1170px] grid-cols-4 gap-8'>
+          <div>
+            <div className='flex flex-row gap-1'>
+              <h3 className='text-h3 text-primary-black font-bold'>Trabook</h3>
+              <img src='/assets/logo.svg' alt='logo' />
+            </div>
+            <p className='text-light-gray mt-4'>
+              Book your trip in minute, get full control for much longer.
+            </p>
+            <div className='mt-6 flex gap-4'>
+              <a href='#' className='bg-background-ash rounded-full p-2'>
+                <img
+                  src='/assets/facebook.svg'
+                  alt='Facebook'
+                  className='h-5 w-5'
+                />
+              </a>
+              <a href='#' className='bg-background-ash rounded-full p-2'>
+                <img
+                  src='/assets/instagram.svg'
+                  alt='Instagram'
+                  className='h-5 w-5'
+                />
+              </a>
+              <a href='#' className='bg-background-ash rounded-full p-2'>
+                <img
+                  src='/assets/twitter.svg'
+                  alt='Twitter'
+                  className='h-5 w-5'
+                />
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className='text-primary-black mb-6 font-bold'>Company</h4>
+            <ul className='space-y-4'>
+              <li>
+                <a
+                  href='#'
+                  className='text-light-gray hover:text-primary-orange'
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href='#'
+                  className='text-light-gray hover:text-primary-orange'
+                >
+                  Careers
+                </a>
+              </li>
+              <li>
+                <a
+                  href='#'
+                  className='text-light-gray hover:text-primary-orange'
+                >
+                  Mobile
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className='text-primary-black mb-6 font-bold'>Contact</h4>
+            <ul className='space-y-4'>
+              <li>
+                <a
+                  href='#'
+                  className='text-light-gray hover:text-primary-orange'
+                >
+                  Help/FAQ
+                </a>
+              </li>
+              <li>
+                <a
+                  href='#'
+                  className='text-light-gray hover:text-primary-orange'
+                >
+                  Press
+                </a>
+              </li>
+              <li>
+                <a
+                  href='#'
+                  className='text-light-gray hover:text-primary-orange'
+                >
+                  Affiliates
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className='text-primary-black mb-6 font-bold'>More</h4>
+            <ul className='space-y-4'>
+              <li>
+                <a
+                  href='#'
+                  className='text-light-gray hover:text-primary-orange'
+                >
+                  Airline Fees
+                </a>
+              </li>
+              <li>
+                <a
+                  href='#'
+                  className='text-light-gray hover:text-primary-orange'
+                >
+                  Airline
+                </a>
+              </li>
+              <li>
+                <a
+                  href='#'
+                  className='text-light-gray hover:text-primary-orange'
+                >
+                  Low Fare Tips
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className='text-light-gray mx-auto mt-10 max-w-[1170px] border-t border-gray-200 pt-8 text-center'>
+          <p>© 2023 Trabook. All rights reserved.</p>
+        </div>
+      </footer>
     </>
   );
 }
 
+const BestVacationPlanSection = () => {
+  return (
+    <section
+      id='destination'
+      className='text-primary-black font-body w-full bg-[#FEFCFB] py-[120px]'
+    >
+      <div className='mx-auto max-w-[1170px]'>
+        <div className='relative mx-auto flex max-w-[521px] flex-col items-center'>
+          <h2 className='font-display text-h2 text-center font-bold'>
+            Best <span className='text-primary-orange'>vacation plan</span>
+          </h2>
+          <p className='text-p2 text-light-gray mx-auto mt-4 text-center leading-[32px]'>
+            Plan your perfect vacation with our travel agency. Choose among
+            hundreds of all-inclusive offers!
+          </p>
+          <div className='absolute top-0 -right-16'>
+            <img src='/assets/coconut-tree-ornament.svg' alt='Plane' />
+          </div>
+        </div>
+
+        <div>
+          <VacationSlider destinations={VacationList} />
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const TestimonialSection = () => {
+  const [activeIndex, setActiveIndex] = React.useState(1);
+
+  const nextTestimonial = () => {
+    setActiveIndex((prev) =>
+      prev === TestimonialsList.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevTestimonial = () => {
+    setActiveIndex((prev) =>
+      prev === 0 ? TestimonialsList.length - 1 : prev - 1
+    );
+  };
+
+  // Function to get visible testimonials (current, previous, and next)
+  const getVisibleTestimonials = () => {
+    const prev =
+      activeIndex === 0 ? TestimonialsList.length - 1 : activeIndex - 1;
+    const next =
+      activeIndex === TestimonialsList.length - 1 ? 0 : activeIndex + 1;
+
+    return [
+      { ...TestimonialsList[prev], position: 'left' },
+      { ...TestimonialsList[activeIndex], position: 'center' },
+      { ...TestimonialsList[next], position: 'right' },
+    ];
+  };
+
+  return (
+    <section className='w-full bg-[#F7F8FC] py-7'>
+      <div className='mx-auto max-w-[1170px]'>
+        <div className='relative mx-auto flex max-w-[521px] flex-col items-center'>
+          <h2 className='text-h2 font-display text-center font-bold'>
+            What People Say{' '}
+            <span className='text-primary-orange'>About Us</span>
+          </h2>
+          <p className='text-light-gray text-p2 mx-auto mt-4 text-center'>
+            Our clients send us bunch of smilies with our services and we love
+            them.
+          </p>
+        </div>
+
+        <div className='relative mt-4 flex justify-center'>
+          <div className='grid max-w-[1170px] grid-cols-1 gap-8 md:grid-cols-3'>
+            {getVisibleTestimonials().map((testimonial, index) => (
+              <div
+                key={`${testimonial.id}-${index}`}
+                className={`transform transition duration-300 ${testimonial.position === 'center' ? 'z-20 scale-100' : 'z-10 scale-95 opacity-70'} ${testimonial.position === 'left' ? 'hidden md:block' : ''} ${testimonial.position === 'right' ? 'hidden md:block' : ''} `}
+              >
+                <TestimonialCard
+                  {...testimonial}
+                  isActive={testimonial.position === 'center'}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className='mt-12 flex items-center justify-center gap-3'>
+          <button
+            onClick={prevTestimonial}
+            className='bg-background-white flex h-5 w-5 items-center justify-center rounded-full border border-[#999999]/50 transition hover:bg-gray-100'
+            aria-label='Previous testimonial'
+          >
+            <img
+              className='h-2 w-2'
+              src='/assets/arrow-gray.svg'
+              alt='Arrow Left'
+            />
+          </button>
+          <button
+            onClick={nextTestimonial}
+            className='bg-primary-orange flex h-5 w-5 items-center justify-center rounded-full transition hover:bg-orange-600'
+            aria-label='Next testimonial'
+          >
+            <img
+              className='h-2 w-2'
+              src='/assets/arrow-white.svg'
+              alt='Arrow Right'
+            />
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const NewsletterSection = () => {
+  return (
+    <section className='w-full bg-[#F7F8FC] py-[120px]'>
+      <div className='bg-primary-orange mx-auto max-w-[1170px] rounded-xl p-12 text-center'>
+        <h2 className='font-display text-h2 text-background-white mx-auto max-w-[650px] font-bold'>
+          Subscribe and get exclusive deals & offers
+        </h2>
+        <div className='mt-10 flex justify-center'>
+          <div className='relative w-[500px]'>
+            <input
+              type='email'
+              placeholder='Enter your email'
+              className='text-content w-full rounded-lg bg-white px-6 py-4'
+            />
+            <button className='bg-primary-orange text-background-white absolute top-1/2 right-2 -translate-y-1/2 transform rounded-lg px-5 py-2 font-medium'>
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 export default Homepage;
