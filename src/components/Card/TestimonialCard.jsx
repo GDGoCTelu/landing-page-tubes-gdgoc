@@ -1,36 +1,43 @@
 import React from 'react';
 
-const TestimonialCard = ({
-  name,
-  location,
-  rating,
-  content,
-  avatar,
-  isActive,
-}) => {
+const TestimonialCard = ({ name, location, rating, content, avatar }) => {
   return (
-    <div
-      className={`rounded-xl bg-white p-6 ${isActive ? 'border-primary-orange border-l-4 shadow-xl' : 'shadow-sm'} mx-auto h-full max-w-[370px] transition duration-300`}
-    >
-      <div className='mb-6 flex items-center gap-4'>
-        <img src={avatar} alt={name} className='h-14 w-14 rounded-full' />
-        <div>
-          <h4 className='text-primary-black text-lg font-bold'>{name}</h4>
-          <p className='text-light-gray text-sm'>{location}</p>
-        </div>
+    <div>
+      <div className='absolute -top-[45px] -left-[30px] z-999'>
+        <img
+          src={avatar}
+          alt={`${name}'s avatar`}
+          className='h-9 w-9 rounded-full object-cover shadow-md'
+        />
       </div>
+      <div
+        className={`relative mx-auto max-w-md rounded-lg bg-white px-5 py-2 shadow-md`}
+      >
+        <div className='mb-0.5 flex items-start'>
+          <div className='flex-1'>
+            <div className='mb-3.5'>
+              <p className='text-base leading-relaxed text-gray-700'>
+                "{content}"
+              </p>
+            </div>
 
-      <p className='text-light-gray mb-5 text-base'>{content}</p>
+            <div>
+              <h3 className='text-lg font-bold text-gray-900'>{name}</h3>
+              <p className='text-sm text-gray-600'>{location}</p>
+            </div>
 
-      <div className='flex items-center'>
-        {[...Array(rating)].map((_, i) => (
-          <img
-            key={i}
-            src='/assets/star.svg'
-            alt='star'
-            className='mr-1 h-2 w-2'
-          />
-        ))}
+            <div className='mt-2 flex items-center'>
+              {[...Array(rating)].map((_, i) => (
+                <img
+                  key={i}
+                  src='/assets/star.svg'
+                  alt='star'
+                  className='mr-1 h-2 w-2'
+                />
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
